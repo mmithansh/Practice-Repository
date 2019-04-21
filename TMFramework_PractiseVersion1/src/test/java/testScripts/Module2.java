@@ -38,4 +38,34 @@ public class Module2 extends BaseClass
 
 		driver.quit();
 	}
+	@Test
+	public void TC203()
+	{
+		WebDriver driver = new ChromeDriver();
+		driver.get("http://www.testingmasters.com/hrm");
+		
+		Pg101_LoginPage loginpage = new Pg101_LoginPage(driver);
+		loginpage.setUsername("ankit3");
+		loginpage.setPassword("abcd1234");
+		loginpage.clickOnLogin();
+
+		Pg102_HomePage homepage = new Pg102_HomePage(driver);
+		homepage.clickOnMyInfo();
+		homepage.clickOnEmergencyContacts();
+		
+		Pg104_EmergencyContacts emergencycontacts = new Pg104_EmergencyContacts(driver);
+		emergencycontacts.clickOnAdd();
+		emergencycontacts.setName("Avinash");
+		emergencycontacts.setRelationship("Child");
+		emergencycontacts.setHomeTelephone("9863247966");
+		emergencycontacts.setMobile("9863201188");
+		emergencycontacts.setWorkTelephone("040-63592368");
+		emergencycontacts.clickOnSave();
+	
+		homepage.Logout();
+
+		driver.quit();
+
+		
+	}
 }
